@@ -1,0 +1,151 @@
+/* src/components/layouts/layouts.css */
+
+/* Top Navigation Bar Structure */
+.app-navbar {
+  @apply fixed top-0 right-0 left-0 z-40 flex h-16 items-center justify-between border-b px-4 backdrop-blur-xl transition-all duration-200;
+  @apply border-app-border bg-app-surface/70;
+}
+
+/* Fix for responsive layout rules in Tailwind v4 */
+@media (min-width: 768px) {
+  .app-navbar {
+    @apply px-6;
+  }
+}
+
+:where(.dark, .dark *) .app-navbar {
+  @apply border-app-border-dark bg-app-surface-dark/70;
+}
+
+/* Mobile Sidebar Hamburg Menu Trigger */
+.navbar-mobile-toggle {
+  @apply rounded-xl p-2 cursor-pointer transition-colors;
+  @apply text-app-muted hover:bg-slate-100;
+}
+
+@media (min-width: 768px) {
+  .navbar-mobile-toggle {
+    @apply hidden;
+  }
+}
+
+:where(.dark, .dark *) .navbar-mobile-toggle {
+  @apply hover:bg-slate-800;
+}
+
+/* App Branding Identifier Button */
+.navbar-brand-btn {
+  @apply flex items-center gap-2.5 group cursor-pointer text-left focus:outline-none;
+}
+
+.navbar-brand-logo {
+  @apply h-8 w-8 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow-md shadow-blue-500/20 transition-transform;
+}
+
+.navbar-brand-btn:hover .navbar-brand-logo {
+  @apply scale-102;
+}
+
+.navbar-brand-text {
+  @apply text-sm font-semibold tracking-tight transition-colors;
+  @apply text-app-header;
+}
+
+.navbar-brand-btn:hover .navbar-brand-text {
+  @apply text-blue-600;
+}
+
+:where(.dark, .dark *) .navbar-brand-btn:hover .navbar-brand-text {
+  @apply text-blue-400;
+}
+
+:where(.dark, .dark *) .navbar-brand-text {
+  @apply text-app-header-dark;
+}
+
+/* Action Trigger Icons (Theme Switcher / Notifications) */
+.navbar-action-btn {
+  @apply group relative rounded-xl p-2 transition-colors cursor-pointer;
+  @apply text-app-muted hover:bg-slate-100;
+}
+
+:where(.dark, .dark *) .navbar-action-btn {
+  @apply text-app-muted-dark hover:bg-slate-800;
+}
+
+/* User Profile Target Box */
+.navbar-profile-btn {
+  @apply group relative flex items-center gap-2.5 rounded-xl p-1 text-left outline-none transition-all cursor-pointer;
+  @apply hover:bg-slate-100;
+}
+
+:where(.dark, .dark *) .navbar-profile-btn {
+  @apply hover:bg-slate-800/70;
+}
+
+.navbar-profile-avatar {
+  @apply h-8 w-8 rounded-full bg-linear-to-br from-blue-500 to-indigo-500 text-white font-semibold text-xs flex items-center justify-center border-2 shadow-sm transition-transform;
+  @apply border-white;
+}
+
+.navbar-profile-btn:hover .navbar-profile-avatar {
+  @apply scale-102;
+}
+
+:where(.dark, .dark *) .navbar-profile-avatar {
+  @apply border-slate-900;
+}
+
+/* --- Navigation Sidebar Panel --- */
+.app-sidebar-backdrop {
+  @apply fixed inset-0 z-30 bg-slate-950/30 backdrop-blur-xs transition-opacity duration-300;
+}
+
+@media (min-width: 768px) {
+  .app-sidebar-backdrop {
+    @apply hidden;
+  }
+}
+
+.app-sidebar {
+  @apply fixed inset-y-0 left-0 z-30 w-64 border-r pt-16 transition-transform duration-300 ease-in-out;
+  @apply border-app-border bg-app-surface;
+}
+
+@media (min-width: 768px) {
+  .app-sidebar {
+    @apply translate-x-0;
+  }
+}
+
+:where(.dark, .dark *) .app-sidebar {
+  @apply border-app-border-dark bg-app-surface-dark;
+}
+
+.sidebar-nav-list {
+  @apply space-y-1 p-3.5 mt-2;
+}
+
+.sidebar-nav-btn {
+  @apply relative flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all group cursor-pointer;
+}
+
+.sidebar-nav-btn-active {
+  @apply bg-slate-900 text-white font-semibold;
+}
+
+:where(.dark, .dark *) .sidebar-nav-btn-active {
+  @apply bg-slate-800/80 text-white;
+}
+
+.sidebar-nav-btn-inactive {
+  @apply text-app-muted hover:bg-slate-100/60 hover:text-app-header;
+}
+
+:where(.dark, .dark *) .sidebar-nav-btn-inactive {
+  @apply text-app-muted-dark hover:bg-slate-800/40 hover:text-white;
+}
+
+.sidebar-active-indicator {
+  @apply absolute left-0 top-2.5 bottom-2.5 w-1 rounded-r-md bg-blue-400 dark:bg-blue-500;
+}
