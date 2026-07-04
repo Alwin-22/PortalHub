@@ -10,14 +10,21 @@ import WorkspaceCalendar from "./components/features/calendar/WorkspaceCalendar"
 import CompanyAnnouncements from "./components/features/announcements/CompanyAnnouncements";
 import { mockAnnouncements } from "./services/mockData";
 import TeamDirectory from "./components/features/directory/TeamDirectory";
+import UserProfile from "./components/features/profile/UserProfile";
 
 function App() {
   const [activeTab, setActiveTab] = useState<
     "overview" | "leave" | "team" | "announcements" | "profile" | "calendar"
   >("overview");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [userName] = useState("Jane Doe");
-  const [darkMode, setDarkMode] = useState(false);
+  // 👤 Centralized User State Engine
+  const [userName, setUserName] = useState(() => {
+    return localStorage.getItem("employeeName") || "Jane Doe";
+  });
+
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -104,6 +111,12 @@ function App() {
                 content={announcement.content}
               />
             ))}
+          </section>
+        )}
+        {/* 👤 USER SETTINGS PROFILE TAB VIEW */}
+        {activeTab === "profile" && (
+          <section className="animate-fadeIn">
+            <UserProfile userName={userName} onNameChange={setUserName} />
           </section>
         )}
         <ToastContainer
