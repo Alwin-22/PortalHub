@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/layouts/Navbar";
 import Sidebar from "./components/layouts/Sidebar";
 import AttendanceStats from "./components/dashboard/AttendanceStats";
+import DashboardCharts from "./components/dashboard/DashboardCharts";
 
 function App() {
   const [activeTab, setActiveTab] = useState<
@@ -52,6 +53,7 @@ function App() {
                 </p>
               </div>
               <AttendanceStats />
+              <DashboardCharts />
             </>
           )}
 
