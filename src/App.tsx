@@ -7,6 +7,8 @@ import AttendanceStats from "./components/features/dashboard/AttendanceStats";
 import DashboardCharts from "./components/features/dashboard/DashboardCharts";
 import LeaveSection from "./components/features/leave/LeaveSeaction";
 import WorkspaceCalendar from "./components/features/calendar/WorkspaceCalendar";
+import CompanyAnnouncements from "./components/features/announcements/CompanyAnnouncements";
+import { mockAnnouncements } from "./services/mockData";
 
 function App() {
   const [activeTab, setActiveTab] = useState<
@@ -72,16 +74,39 @@ function App() {
             </section>
           )}
         </div>
+        {/* 📢 ANNOUNCEMENTS FEED TAB VIEW */}
+        {activeTab === "announcements" && (
+          <section className="animate-fadeIn max-w-4xl space-y-4">
+            <div className="mb-4 border-b border-app-border dark:border-app-border-dark pb-4">
+              <h2 className="text-xl font-bold text-app-header dark:text-app-header-dark tracking-tight">
+                Latest Board Communications
+              </h2>
+              <p className="text-xs text-app-muted dark:text-app-muted-dark mt-0.5">
+                Stay up to date with official corporate operational
+                announcements.
+              </p>
+            </div>
+
+            {mockAnnouncements.map((announcement) => (
+              <CompanyAnnouncements
+                key={announcement.id}
+                id={announcement.id}
+                title={announcement.title}
+                content={announcement.content}
+              />
+            ))}
+          </section>
+        )}
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme={darkMode ? "dark" : "light"}
+        />
       </main>
-      <ToastContainer
-        position="top-right"
-        autoClose={2500}
-        hideProgressBar={false}
-        closeOnClick
-        pauseOnHover
-        draggable
-        theme={darkMode ? "dark" : "light"}
-      />
     </div>
   );
 }
