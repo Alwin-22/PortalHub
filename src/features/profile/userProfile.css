@@ -100,8 +100,24 @@
   @apply h-3 w-3 text-app-muted;
 }
 
+/* Base style template for standard text inputs */
 .profile-text-input {
   @apply w-full rounded-xl border border-app-border dark:border-app-border-dark bg-slate-50/50 dark:bg-slate-800/30 p-2.5 text-sm text-app-header dark:text-app-header-dark outline-hidden focus:border-blue-500 focus:bg-app-surface dark:focus:bg-app-surface-dark focus:ring-4 focus:ring-blue-500/5 transition-all;
+}
+
+/* Specialized Alignment Styles for Phone Country Picker Setup */
+.phone-input-group {
+  @apply flex gap-2 w-full items-center;
+}
+
+.phone-country-select {
+  @apply w-28 min-w-28 shrink-0 cursor-pointer pr-2 pl-3 text-center;
+}
+
+.phone-number-input {
+  /* Core Input Styles */
+  @apply rounded-xl border border-app-border dark:border-app-border-dark bg-slate-50/50 dark:bg-slate-800/30 p-2.5 text-sm text-app-header dark:text-app-header-dark outline-hidden focus:border-blue-500 focus:bg-app-surface dark:focus:bg-app-surface-dark focus:ring-4 focus:ring-blue-500/5 transition-all;
+  @apply flex-1 min-w-0 w-auto;
 }
 
 /* Form Interactivity triggers */

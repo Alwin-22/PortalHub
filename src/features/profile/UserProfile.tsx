@@ -4,8 +4,8 @@ import {
   Mail,
   Shield,
   Building,
-  Phone,
   MapPin,
+  Phone,
   BadgeCheck,
 } from "lucide-react";
 import { toast } from "react-toastify";
@@ -16,14 +16,24 @@ interface UserProfileProps {
   onNameChange: (newName: string) => void;
 }
 
+const COUNTRY_CODES = [
+  { code: "+44", label: "UK (+44)" },
+  { code: "+1", label: "US/CA (+1)" },
+  { code: "+91", label: "IN (+91)" },
+  { code: "+61", label: "AU (+61)" },
+  { code: "+33", label: "FR (+33)" },
+  { code: "+49", label: "DE (+49)" },
+];
+
 export default function UserProfile({
   userName,
   onNameChange,
 }: UserProfileProps) {
+  const [countryCode, setCountryCode] = useState("+44");
   const [formData, setFormData] = useState({
     name: userName,
     email: "jane.doe@company.com",
-    phone: "+44 7700 900077",
+    phone: "7700900077",
     location: "London, UK",
     department: "Product Engineering",
     role: "Senior UX Researcher",
@@ -42,42 +52,75 @@ export default function UserProfile({
     e.preventDefault();
     toast.dismiss();
 
-    if (!formData.name.trim()) {
-      toast.error("Full Name cannot be left blank.", {
-        className: "font-medium text-sm rounded-xl shadow-md",
-      });
-      return;
-    }
-    if (!formData.email.trim() || !formData.email.includes("@")) {
-      toast.error("Please provide a valid email address.", {
-        className: "font-medium text-sm rounded-xl shadow-md",
-      });
-      return;
-    }
-    if (!formData.phone.trim()) {
-      toast.error("Mobile Number is required.", {
-        className: "font-medium text-sm rounded-xl shadow-md",
-      });
-      return;
-    }
-    if (!formData.location.trim()) {
-      toast.error("Office Location must be specified.", {
-        className: "font-medium text-sm rounded-xl shadow-md",
-      });
-      return;
-    }
-
-    onNameChange(formData.name.trim());
-    localStorage.setItem("employeeName", formData.name.trim());
-
-    toast.success("Profile settings saved!", {
+    const toastConfig = {
       className: "font-medium text-sm rounded-xl shadow-md",
+    };
+
+    const cleanedName = formData.name.trim();
+    if (!cleanedName) {
+      toast.error("Full Name cannot be left blank.", toastConfig);
+      return;
+    }
+    if (cleanedName.length < 2) {
+      toast.error("Full Name must be at least 2 characters long.", toastConfig);
+      return;
+    }
+    const nameRegex = /^[a-zA-Z\s\-']{2,}$/;
+    if (!nameRegex.test(cleanedName)) {
+      toast.error("Full Name contains invalid characters.", toastConfig);
+      return;
+    }
+
+    const cleanedEmail = formData.email.trim();
+    if (!cleanedEmail) {
+      toast.error("Email Address cannot be left blank.", toastConfig);
+      return;
+    }
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(cleanedEmail)) {
+      toast.error("Please provide a valid email address.", toastConfig);
+      return;
+    }
+
+    const cleanedPhone = formData.phone.replace(/\s+/g, "");
+    if (!cleanedPhone) {
+      toast.error("Mobile Number is required.", toastConfig);
+      return;
+    }
+    const digitRegex = /^\d{10}$/;
+    if (!digitRegex.test(cleanedPhone)) {
+      toast.error("Mobile number must be exactly 10 digits.", toastConfig);
+      return;
+    }
+
+    const cleanedLocation = formData.location.trim();
+    if (!cleanedLocation) {
+      toast.error("Office Location must be specified.", toastConfig);
+      return;
+    }
+    if (cleanedLocation.length < 3) {
+      toast.error(
+        "Office Location must be at least 3 characters.",
+        toastConfig,
+      );
+      return;
+    }
+
+    const fullPhoneNumber = `${countryCode} ${cleanedPhone}`;
+
+    onNameChange(cleanedName);
+    localStorage.setItem("employeeName", cleanedName);
+    localStorage.setItem("employeePhone", fullPhoneNumber);
+
+    toast.success("Profile setting configurations saved!", {
+      ...toastConfig,
       icon: <span>👤</span>,
     });
   };
 
   const initials = formData.name
     .split(" ")
+    .filter(Boolean)
     .map((n) => n[0])
     .join("")
     .substring(0, 2)
@@ -97,10 +140,12 @@ export default function UserProfile({
             <p className="banner-role-subtext">{formData.role}</p>
             <div className="banner-metadata-tags">
               <span className="metadata-tag">
-                <Building className="tag-icon" /> {formData.department}
+                <Building className="tag-icon" />
+                {formData.department}
               </span>
               <span className="metadata-tag">
-                <MapPin className="tag-icon" /> {formData.location}
+                <MapPin className="tag-icon" />
+                {formData.location}
               </span>
             </div>
           </div>
@@ -151,20 +196,41 @@ export default function UserProfile({
                 />
               </div>
 
-              <div className="input-field-group">
+              {/* Mobile Number Container - Fixed to take full width of the form grid row */}
+              <div className="input-field-group sm:col-span-2">
                 <label className="input-field-label">
                   <Phone className="label-icon" /> Mobile Number
                 </label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="profile-text-input"
-                />
+                <div className="phone-input-group">
+                  <select
+                    value={countryCode}
+                    onChange={(e) => setCountryCode(e.target.value)}
+                    className="profile-text-input phone-country-select"
+                  >
+                    {COUNTRY_CODES.map((item) => (
+                      <option
+                        key={item.code}
+                        value={item.code}
+                        className="bg-app-surface dark:bg-app-surface-dark"
+                      >
+                        {item.label}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="text"
+                    name="phone"
+                    maxLength={10}
+                    placeholder="7700900077"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="profile-text-input phone-number-input"
+                  />
+                </div>
               </div>
 
-              <div className="input-field-group">
+              {/* Office Location Container - Spans full width for clean uniformity */}
+              <div className="input-field-group sm:col-span-2">
                 <label className="input-field-label">
                   <MapPin className="label-icon" /> Office Location
                 </label>

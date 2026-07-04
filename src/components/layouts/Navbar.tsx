@@ -37,7 +37,7 @@ export default function Navbar({
   return (
     <header className="app-navbar">
       <div className="flex items-center gap-4">
-        {/* Mobile Hamburg Trigger */}
+        {/* Mobile Hamburger Trigger */}
         <button
           type="button"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -71,15 +71,23 @@ export default function Navbar({
           ) : (
             <Moon className="h-4 w-4 text-slate-600" />
           )}
+          {/* Tooltip text element */}
+          <span className="navbar-tooltip text-center-tooltip">
+            {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          </span>
         </button>
 
         {/* Notification Icon */}
         <button type="button" className="navbar-action-btn group">
           <Bell className="h-4 w-4" />
           <span className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-rose-500 ring-2 ring-white dark:ring-slate-900" />
+          {/* Tooltip text element */}
+          <span className="navbar-tooltip text-center-tooltip">
+            View Notifications
+          </span>
         </button>
 
-        <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block" />
+        <div className="navbar-divider" />
 
         {/* User Profile Hook */}
         <button
@@ -93,6 +101,10 @@ export default function Navbar({
               {userName}
             </span>
           </div>
+          {/* Tooltip text element */}
+          <span className="navbar-tooltip text-right-tooltip">
+            View User Profile Settings
+          </span>
         </button>
       </div>
     </header>
