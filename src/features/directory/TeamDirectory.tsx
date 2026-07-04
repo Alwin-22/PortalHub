@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { mockEmployees } from "../../../services/mockData";
+import { mockEmployees } from "../../services/mockData";
 import { Search, Filter, Mail } from "lucide-react";
 import "./teamDirectory.css";
 

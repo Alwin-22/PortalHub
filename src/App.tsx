@@ -1,16 +1,16 @@
 // src/App.tsx
 import { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
-import Navbar from "./components/features/layouts/Navbar";
-import Sidebar from "./components/features/layouts/Sidebar";
-import AttendanceStats from "./components/features/dashboard/AttendanceStats";
-import DashboardCharts from "./components/features/dashboard/DashboardCharts";
-import LeaveSection from "./components/features/leave/LeaveSeaction";
-import WorkspaceCalendar from "./components/features/calendar/WorkspaceCalendar";
-import CompanyAnnouncements from "./components/features/announcements/CompanyAnnouncements";
+import Navbar from "./components/layouts/Navbar";
+import Sidebar from "./components/layouts/Sidebar";
+import AttendanceStats from "./features/dashboard/AttendanceStats";
+import DashboardCharts from "./features/dashboard/DashboardCharts";
+import LeaveSection from "./features/leave/LeaveSeaction";
+import WorkspaceCalendar from "./features/calendar/WorkspaceCalendar";
+import CompanyAnnouncements from "./features/announcements/CompanyAnnouncements";
 import { mockAnnouncements } from "./services/mockData";
-import TeamDirectory from "./components/features/directory/TeamDirectory";
-import UserProfile from "./components/features/profile/UserProfile";
+import TeamDirectory from "./features/directory/TeamDirectory";
+import UserProfile from "./features/profile/UserProfile";
 
 function App() {
   const [activeTab, setActiveTab] = useState<

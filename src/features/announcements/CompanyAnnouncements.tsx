@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAISummary } from "../../../services/aiServices";
+import { fetchAISummary } from "../../services/aiServices";
 import { Sparkles, Loader2, Bot, HelpCircle } from "lucide-react";
 
 interface CompanyAnnouncementsProps {

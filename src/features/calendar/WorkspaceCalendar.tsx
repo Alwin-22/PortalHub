@@ -2,7 +2,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
 import { toast } from "react-toastify";
-import { mockWorkspaceEvents } from "../../../services/calendarData";
+import { mockWorkspaceEvents } from "../../services/calendarData";
 import "../calendar/workspaceCalendar.css";
 
 export default function WorkspaceCalendar() {

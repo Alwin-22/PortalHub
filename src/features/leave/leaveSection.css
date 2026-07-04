@@ -1,5 +1,5 @@
 /* src/features/leave/leave.css */
-@reference "../../../index.css";
+@reference "../../index.css";
 
 /* Structural grid layout for allowance stats */
 .leave-summary-grid {

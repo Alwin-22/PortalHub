@@ -1,6 +1,6 @@
 // src/features/leave/LeaveSection.tsx
 import React, { useState } from "react";
-import { initialLeaveBalance } from "../../../services/mockData";
+import { initialLeaveBalance } from "../../services/mockData";
 import {
   Umbrella,
   ShieldAlert,
