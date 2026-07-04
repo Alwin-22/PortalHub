@@ -1,5 +1,5 @@
 export interface WorkspaceEvent {
-  extendedProps: any;
+  extendedProps?: any;
   id: string;
   title: string;
   start: string; // ISO format: YYYY-MM-DD or YYYY-MM-DDTHH:MM:SS
