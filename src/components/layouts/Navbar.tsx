@@ -1,5 +1,6 @@
+// src/components/layouts/Navbar.tsx
 import { Sun, Moon, Menu, Bell } from "lucide-react";
-import "./layouts.css";
+import "./layout.css";
 
 interface NavbarProps {
   darkMode: boolean;
@@ -50,7 +51,7 @@ export default function Navbar({
         <button
           type="button"
           onClick={() => setActiveTab("overview")}
-          className="navbar-brand-btn"
+          className="navbar-brand-btn group"
           title="Go to Dashboard Overview"
         >
           <div className="navbar-brand-logo">H</div>
@@ -63,7 +64,7 @@ export default function Navbar({
         <button
           type="button"
           onClick={setDarkMode}
-          className="navbar-action-btn"
+          className="navbar-action-btn group"
         >
           {darkMode ? (
             <Sun className="h-4 w-4 text-amber-500" />
@@ -73,18 +74,18 @@ export default function Navbar({
         </button>
 
         {/* Notification Icon */}
-        <button type="button" className="navbar-action-btn">
+        <button type="button" className="navbar-action-btn group">
           <Bell className="h-4 w-4" />
           <span className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-rose-500 ring-2 ring-white dark:ring-slate-900" />
         </button>
 
-        <div className="h-4 w-1px bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block" />
+        <div className="h-4 w-px bg-slate-200 dark:bg-slate-800 mx-1 hidden sm:block" />
 
         {/* User Profile Hook */}
         <button
           type="button"
           onClick={() => setActiveTab("profile")}
-          className="navbar-profile-btn"
+          className="navbar-profile-btn group"
         >
           <div className="navbar-profile-avatar">{initials || "EE"}</div>
           <div className="hidden sm:block pr-1.5">

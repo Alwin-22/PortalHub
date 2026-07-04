@@ -44,7 +44,7 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Mobile background shade overlay */}
+      {/* Mobile backdrop shade overlay */}
       {isOpen && (
         <div
           className="app-sidebar-backdrop"
@@ -52,10 +52,8 @@ export default function Sidebar({
         />
       )}
 
-      {/* Main Structural Navigation Panel Container */}
-      <aside
-        className={`app-sidebar ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
-      >
+      {/* Main Sidebar Panel */}
+      <aside className={`app-sidebar ${isOpen ? "app-sidebar-open" : ""}`}>
         <nav className="sidebar-nav-list">
           {menuItems.map((item) => {
             const isActive = activeTab === item.id;
@@ -67,9 +65,9 @@ export default function Sidebar({
                   setActiveTab(item.id);
                   setIsOpen(false);
                 }}
-                className={`sidebar-nav-btn ${isActive ? "sidebar-nav-btn-active" : "sidebar-nav-btn-inactive"}`}
+                className={`sidebar-nav-btn group ${isActive ? "sidebar-nav-btn-active" : "sidebar-nav-btn-inactive"}`}
               >
-                {/* Active Sidebar Strip Highlight */}
+                {/* Active strip highlight indicator */}
                 {isActive && <div className="sidebar-active-indicator" />}
 
                 <item.icon

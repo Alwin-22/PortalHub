@@ -1,31 +1,48 @@
 /* src/components/layouts/layouts.css */
+@reference "../../index.css";
 
-/* Top Navigation Bar Structure */
+/* Main top bar container */
 .app-navbar {
-  @apply fixed top-0 right-0 left-0 z-40 flex h-16 items-center justify-between border-b px-4 backdrop-blur-xl transition-all duration-200;
-  @apply border-app-border bg-app-surface/70;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 40;
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  backdrop-filter: blur(24px);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  border-color: var(--color-app-border);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
-/* Fix for responsive layout rules in Tailwind v4 */
 @media (min-width: 768px) {
   .app-navbar {
-    @apply px-6;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
 :where(.dark, .dark *) .app-navbar {
-  @apply border-app-border-dark bg-app-surface-dark/70;
+  border-color: var(--color-app-border-dark);
+  background-color: rgba(15, 23, 42, 0.7);
 }
 
-/* Mobile Sidebar Hamburg Menu Trigger */
+/* Mobile hamburger navigation icon button */
 .navbar-mobile-toggle {
-  @apply rounded-xl p-2 cursor-pointer transition-colors;
-  @apply text-app-muted hover:bg-slate-100;
+  @apply rounded-xl p-2 cursor-pointer transition-colors text-app-muted hover:bg-slate-100;
 }
 
 @media (min-width: 768px) {
   .navbar-mobile-toggle {
-    @apply hidden;
+    display: none;
   }
 }
 
@@ -33,9 +50,9 @@
   @apply hover:bg-slate-800;
 }
 
-/* App Branding Identifier Button */
+/* Navbar logo action anchor */
 .navbar-brand-btn {
-  @apply flex items-center gap-2.5 group cursor-pointer text-left focus:outline-none;
+  @apply flex items-center gap-2.5 cursor-pointer text-left focus:outline-none;
 }
 
 .navbar-brand-logo {
@@ -43,12 +60,11 @@
 }
 
 .navbar-brand-btn:hover .navbar-brand-logo {
-  @apply scale-102;
+  transform: scale(1.02);
 }
 
 .navbar-brand-text {
-  @apply text-sm font-semibold tracking-tight transition-colors;
-  @apply text-app-header;
+  @apply text-sm font-semibold tracking-tight transition-colors text-app-header;
 }
 
 .navbar-brand-btn:hover .navbar-brand-text {
@@ -63,20 +79,18 @@
   @apply text-app-header-dark;
 }
 
-/* Action Trigger Icons (Theme Switcher / Notifications) */
+/* Core operation icon triggers */
 .navbar-action-btn {
-  @apply group relative rounded-xl p-2 transition-colors cursor-pointer;
-  @apply text-app-muted hover:bg-slate-100;
+  @apply relative rounded-xl p-2 transition-colors cursor-pointer text-app-muted hover:bg-slate-100;
 }
 
 :where(.dark, .dark *) .navbar-action-btn {
   @apply text-app-muted-dark hover:bg-slate-800;
 }
 
-/* User Profile Target Box */
+/* Personal account route target box */
 .navbar-profile-btn {
-  @apply group relative flex items-center gap-2.5 rounded-xl p-1 text-left outline-none transition-all cursor-pointer;
-  @apply hover:bg-slate-100;
+  @apply relative flex items-center gap-2.5 rounded-xl p-1 text-left outline-none transition-all cursor-pointer hover:bg-slate-100;
 }
 
 :where(.dark, .dark *) .navbar-profile-btn {
@@ -84,50 +98,79 @@
 }
 
 .navbar-profile-avatar {
-  @apply h-8 w-8 rounded-full bg-linear-to-br from-blue-500 to-indigo-500 text-white font-semibold text-xs flex items-center justify-center border-2 shadow-sm transition-transform;
-  @apply border-white;
+  @apply h-8 w-8 rounded-full bg-linear-to-br from-blue-500 to-indigo-500 text-white font-semibold text-xs flex items-center justify-center border-2 shadow-sm transition-transform border-white;
 }
 
 .navbar-profile-btn:hover .navbar-profile-avatar {
-  @apply scale-102;
+  transform: scale(1.02);
 }
 
 :where(.dark, .dark *) .navbar-profile-avatar {
   @apply border-slate-900;
 }
 
-/* --- Navigation Sidebar Panel --- */
+/* Fullscreen mobile overlay shadow curtain */
 .app-sidebar-backdrop {
-  @apply fixed inset-0 z-30 bg-slate-950/30 backdrop-blur-xs transition-opacity duration-300;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  background-color: rgba(2, 6, 23, 0.3);
+  backdrop-filter: blur(4px);
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
 
 @media (min-width: 768px) {
   .app-sidebar-backdrop {
-    @apply hidden;
+    display: none;
   }
 }
 
+/* Left structural frame panel */
 .app-sidebar {
-  @apply fixed inset-y-0 left-0 z-30 w-64 border-r pt-16 transition-transform duration-300 ease-in-out;
-  @apply border-app-border bg-app-surface;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  width: 16rem;
+  padding-top: 4rem;
+  border-right-width: 1px;
+  transform: translateX(-100%);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  border-color: var(--color-app-border);
+  background-color: var(--color-app-surface);
+}
+
+/* State added when drawer toggle is triggered on mobile screen */
+.app-sidebar-open {
+  transform: translateX(0);
 }
 
 @media (min-width: 768px) {
   .app-sidebar {
-    @apply translate-x-0;
+    transform: translateX(0) !important;
   }
 }
 
 :where(.dark, .dark *) .app-sidebar {
-  @apply border-app-border-dark bg-app-surface-dark;
+  border-color: var(--color-app-border-dark);
+  background-color: var(--color-app-surface-dark);
 }
 
+/* Navigation layout settings lists */
 .sidebar-nav-list {
   @apply space-y-1 p-3.5 mt-2;
 }
 
 .sidebar-nav-btn {
-  @apply relative flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all group cursor-pointer;
+  @apply relative flex w-full items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition-all cursor-pointer;
 }
 
 .sidebar-nav-btn-active {
@@ -146,6 +189,14 @@
   @apply text-app-muted-dark hover:bg-slate-800/40 hover:text-white;
 }
 
+/* Selected menu selection line indicator */
 .sidebar-active-indicator {
-  @apply absolute left-0 top-2.5 bottom-2.5 w-1 rounded-r-md bg-blue-400 dark:bg-blue-500;
+  position: absolute;
+  left: 0;
+  top: 0.625rem;
+  bottom: 0.625rem;
+  width: 4px;
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  @apply bg-blue-400 dark:bg-blue-500;
 }
