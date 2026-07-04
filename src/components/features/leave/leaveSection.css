@@ -1,0 +1,61 @@
+/* src/features/leave/leave.css */
+@reference "../../../index.css";
+
+/* Structural grid layout for allowance stats */
+.leave-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .leave-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.leave-stat-card {
+  @apply rounded-xl border p-4 bg-app-surface border-app-border text-center shadow-xs;
+}
+
+:where(.dark, .dark *) .leave-stat-card {
+  @apply bg-app-surface-dark border-app-border-dark;
+}
+
+/* History data table shell layout */
+.table-container {
+  @apply rounded-xl border overflow-x-auto bg-app-surface border-app-border shadow-xs;
+}
+
+:where(.dark, .dark *) .table-container {
+  @apply bg-app-surface-dark border-app-border-dark;
+}
+
+.leave-table {
+  @apply w-full border-collapse text-left text-sm;
+}
+
+.leave-table th {
+  @apply bg-slate-50/70 p-4 font-semibold tracking-tight text-app-header border-b border-app-border;
+}
+
+:where(.dark, .dark *) .leave-table th {
+  @apply bg-slate-800/40 text-app-header-dark border-app-border-dark;
+}
+
+.leave-table td {
+  @apply p-4 border-b border-app-border/70 text-app-muted font-medium;
+}
+
+:where(.dark, .dark *) .leave-table td {
+  @apply border-app-border-dark/60 text-app-muted-dark;
+}
+
+/* Status capsule chips */
+.badge-approved {
+  @apply bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}
+.badge-pending {
+  @apply bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+}

@@ -1,9 +1,11 @@
 // src/App.tsx
 import { useState, useEffect } from "react";
-import Navbar from "./components/layouts/Navbar";
-import Sidebar from "./components/layouts/Sidebar";
-import AttendanceStats from "./components/dashboard/AttendanceStats";
-import DashboardCharts from "./components/dashboard/DashboardCharts";
+import { ToastContainer } from "react-toastify";
+import Navbar from "./components/features/layouts/Navbar";
+import Sidebar from "./components/features/layouts/Sidebar";
+import AttendanceStats from "./components/features/dashboard/AttendanceStats";
+import DashboardCharts from "./components/features/dashboard/DashboardCharts";
+import LeaveSection from "./components/features/leave/LeaveSeaction";
 
 function App() {
   const [activeTab, setActiveTab] = useState<
@@ -56,20 +58,23 @@ function App() {
               <DashboardCharts />
             </>
           )}
-
-          {activeTab !== "overview" && (
-            <div className="mt-2">
-              <h1 className="text-2xl font-bold">PortalHub Route View</h1>
-              <p className="text-sm text-app-muted mt-1">
-                Active panel segment:{" "}
-                <span className="font-mono text-blue-500 font-bold">
-                  {activeTab}
-                </span>
-              </p>
-            </div>
+          {/* 📅 LEAVE REQUESTS TAB VIEW */}
+          {activeTab === "leave" && (
+            <section className="animate-fadeIn">
+              <LeaveSection />
+            </section>
           )}
         </div>
       </main>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme={darkMode ? "dark" : "light"}
+      />
     </div>
   );
 }

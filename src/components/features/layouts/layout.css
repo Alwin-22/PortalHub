@@ -1,6 +1,5 @@
 /* src/components/layouts/layouts.css */
-@reference "../../index.css";
-
+@reference "../../../index.css";
 /* Main top bar container */
 .app-navbar {
   position: fixed;
