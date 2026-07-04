@@ -1,3 +1,4 @@
+// src/components/layouts/Sidebar.tsx
 import {
   LayoutDashboard,
   Calendar,

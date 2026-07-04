@@ -1,0 +1,53 @@
+/* src/components/dashboard/dashboard.css */
+@reference "../../index.css";
+
+/* Dashboard layout grid matrix */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Metric card container */
+.stats-card {
+  @apply rounded-2xl border p-5 transition-all duration-200 bg-app-surface border-app-border shadow-xs;
+}
+
+:where(.dark, .dark *) .stats-card {
+  @apply bg-app-surface-dark border-app-border-dark;
+}
+
+/* Card layout inner alignments */
+.stats-header {
+  @apply flex items-center justify-between;
+}
+
+.stats-icon-wrapper {
+  @apply rounded-xl p-2.5 bg-blue-50/80 text-blue-600;
+}
+
+:where(.dark, .dark *) .stats-icon-wrapper {
+  @apply bg-blue-950/40 text-blue-400;
+}
+
+.stats-value {
+  @apply text-2xl font-bold tracking-tight mt-4 text-app-header;
+}
+
+:where(.dark, .dark *) .stats-value {
+  @apply text-app-header-dark;
+}
+
+.stats-label {
+  @apply text-xs font-medium tracking-wide uppercase text-app-muted mt-1;
+}
+
+:where(.dark, .dark *) .stats-label {
+  @apply text-app-muted-dark;
+}
