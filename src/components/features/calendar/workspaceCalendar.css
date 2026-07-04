@@ -1,0 +1,260 @@
+/* 1. Header Toolbar Core Layouts */
+.fc .fc-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 1.5rem !important;
+}
+.fc .fc-button-group {
+  display: inline-flex !important;
+  gap: 0.375rem !important;
+}
+.fc .fc-button-primary {
+  background-color: rgb(15, 23, 42) !important;
+  border-color: transparent !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  border-radius: 0.75rem !important;
+  padding: 0.45rem 0.75rem !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease-in-out !important;
+}
+:where(.dark, .dark *) .fc .fc-button-primary {
+  background-color: rgb(30, 41, 59) !important;
+}
+.fc .fc-button-primary:hover {
+  background-color: #fde68a !important;
+  color: rgb(15, 23, 42) !important;
+}
+.fc .fc-button-active,
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background-color: #f59e0b !important;
+  color: #ffffff !important;
+}
+
+/* 2. SCROLLGRID OUTER FRAME */
+.fc-theme-standard .fc-scrollgrid {
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+  border: 1px solid rgb(203, 213, 225) !important;
+}
+:where(.dark, .dark *) .fc-theme-standard .fc-scrollgrid {
+  border: 1px solid rgb(51, 65, 85) !important;
+  background-color: rgb(9, 15, 29) !important; /* Fixed syntax line-break issue */
+}
+
+.fc .fc-daygrid-day-number,
+.fc .fc-daygrid-day-top a,
+.fc .fc-col-header-cell-cushion {
+  color: rgb(51, 65, 85) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+}
+:where(.dark, .dark *) .fc .fc-daygrid-day-number,
+:where(.dark, .dark *) .fc .fc-daygrid-day-top a,
+:where(.dark, .dark *) .fc .fc-col-header-cell-cushion {
+  color: rgb(241, 245, 249) !important;
+}
+.fc-theme-standard th.fc-col-header-cell {
+  background-color: rgb(241, 245, 249) !important;
+  padding: 0.5rem 0 !important;
+}
+:where(.dark, .dark *) .fc-theme-standard th.fc-col-header-cell {
+  background-color: rgb(15, 23, 42) !important;
+}
+
+/* 3. MONTH GRID VIEW TASKS APPEARANCE */
+.is-month-grid .fc-daygrid-event-harness {
+  margin: 0.25rem 0.35rem !important;
+  position: relative !important;
+}
+.is-month-grid .fc-daygrid-event-harness .fc-event-time {
+  display: none !important;
+}
+
+/* Light Mode Colors Mapping */
+.is-month-grid .calendar-event-pill[data-type="meeting"] {
+  background-color: rgb(59, 130, 246) !important;
+  border: none !important;
+}
+.is-month-grid .calendar-event-pill[data-type="deadline"] {
+  background-color: rgb(244, 63, 94) !important;
+  border: none !important;
+}
+.is-month-grid .calendar-event-pill[data-type="todo"] {
+  background-color: rgb(16, 185, 129) !important;
+  border: none !important;
+}
+
+/* Dark Mode Colors Mapping */
+:where(.dark, .dark *) .is-month-grid .calendar-event-pill[data-type="meeting"] {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: rgb(147, 197, 253) !important;
+}
+:where(.dark, .dark *) .is-month-grid .calendar-event-pill[data-type="deadline"] {
+  background-color: rgba(244, 63, 94, 0.15) !important;
+  border: 1px solid rgba(244, 63, 94, 0.3) !important;
+  color: rgb(253, 164, 175) !important;
+}
+:where(.dark, .dark *) .is-month-grid .calendar-event-pill[data-type="todo"] {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: rgb(110, 231, 183) !important;
+}
+
+.is-month-grid .calendar-event-pill {
+  border-radius: 0.5rem !important;
+  padding: 5px 8px !important;
+  color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* POPPING ENGINE FOR OVERFLOWN TEXT ON MOUSE HOVER */
+.is-month-grid .calendar-event-pill:hover {
+  position: absolute !important;
+  z-index: 50 !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  max-width: 280px !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+:where(.dark, .dark *) .is-month-grid .calendar-event-pill:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6) !important;
+  background-color: rgb(15, 23, 42) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 4. LIST VIEW ENVIRONMENT INTEGRATION */
+.fc-theme-standard .fc-list {
+  border-color: rgb(203, 213, 225) !important;
+  background-color: transparent !important;
+  border-radius: 1rem !important;
+  overflow: hidden !important;
+}
+:where(.dark, .dark *) .fc-theme-standard .fc-list {
+  border-color: rgb(51, 65, 85) !important;
+}
+
+.is-list-grid .fc-list-day-cushion,
+.is-list-grid .fc-cell-shaded,
+.is-list-grid .fc-list-day {
+  background-color: rgb(241, 245, 249) !important;
+}
+:where(.dark, .dark *) .is-list-grid .fc-list-day-cushion,
+:where(.dark, .dark *) .is-list-grid .fc-cell-shaded,
+:where(.dark, .dark *) .is-list-grid .fc-list-day,
+:where(.dark, .dark *) .is-list-grid .fc-list-day td {
+  background-color: rgb(30, 41, 59) !important;
+}
+
+.is-list-grid .fc-list-day-text,
+.is-list-grid .fc-list-day-side-text {
+  color: rgb(15, 23, 42) !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  text-decoration: none !important;
+}
+:where(.dark, .dark *) .is-list-grid .fc-list-day-text,
+:where(.dark, .dark *) .is-list-grid .fc-list-day-side-text {
+  color: rgb(241, 245, 249) !important;
+}
+
+.is-list-grid .fc-list-table,
+.is-list-grid .fc-list-event,
+.is-list-grid .fc-list-event td {
+  position: static !important;
+  cursor: default !important;
+}
+.is-list-grid .fc-list-event td {
+  padding: 0.9rem 1.2rem !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgb(226, 232, 240) !important;
+}
+:where(.dark, .dark *) .is-list-grid .fc-list-event td {
+  background-color: rgb(15, 23, 42) !important;
+  border-bottom: 1px solid rgb(51, 65, 85) !important;
+}
+
+.is-list-grid .fc-list-event-time {
+  color: rgb(71, 85, 105) !important;
+  font-size: 0.775rem !important;
+  font-weight: 600 !important;
+  width: 140px !important;
+}
+:where(.dark, .dark *) .is-list-grid .fc-list-event-time {
+  color: rgb(148, 163, 184) !important;
+}
+
+.is-list-grid .fc-list-event-title a {
+  color: rgb(15, 23, 42) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+}
+:where(.dark, .dark *) .is-list-grid .fc-list-event-title a {
+  color: rgb(241, 245, 249) !important;
+}
+
+.is-list-grid .fc-list-event-dot {
+  display: none !important;
+}
+
+.is-list-grid .fc-list-event td:first-child {
+  position: relative !important;
+  padding-left: 1.5rem !important;
+}
+.is-list-grid .fc-list-event td:first-child::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0.5rem !important;
+  bottom: 0.5rem !important;
+  left: 0.5rem !important;
+  width: 4px !important;
+  border-radius: 2px !important;
+}
+
+.is-list-grid .fc-list-event[data-type="meeting"] td:first-child::before {
+  background-color: rgb(59, 130, 246) !important;
+}
+.is-list-grid .fc-list-event[data-type="deadline"] td:first-child::before {
+  background-color: rgb(244, 63, 94) !important;
+}
+.is-list-grid .fc-list-event[data-type="todo"] td:first-child::before {
+  background-color: rgb(16, 185, 129) !important;
+}
+
+/* 5. CELLS RE-LINE ARCHITECTURE */
+.fc .fc-toolbar-title {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  color: rgb(15, 23, 42);
+  letter-spacing: -0.02em;
+}
+:where(.dark, .dark *) .fc .fc-toolbar-title {
+  color: rgb(248, 250, 252);
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: rgb(226, 232, 240) !important;
+}
+:where(.dark, .dark *) .fc-theme-standard td,
+:where(.dark, .dark *) .fc-theme-standard th {
+  border-color: rgb(51, 65, 85) !important;
+}
+
+.fc .fc-day-today {
+  background-color: rgba(245, 158, 11, 0.05) !important;
+  outline: 2px solid #f59e0b !important;
+  outline-offset: -2px;
+}

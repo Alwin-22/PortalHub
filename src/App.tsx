@@ -6,6 +6,7 @@ import Sidebar from "./components/features/layouts/Sidebar";
 import AttendanceStats from "./components/features/dashboard/AttendanceStats";
 import DashboardCharts from "./components/features/dashboard/DashboardCharts";
 import LeaveSection from "./components/features/leave/LeaveSeaction";
+import WorkspaceCalendar from "./components/features/calendar/WorkspaceCalendar";
 
 function App() {
   const [activeTab, setActiveTab] = useState<
@@ -57,6 +58,12 @@ function App() {
               <AttendanceStats />
               <DashboardCharts />
             </>
+          )}
+          {/* 📅 WORKSPACE CALENDAR VIEW */}
+          {activeTab === "calendar" && (
+            <section className="animate-fadeIn">
+              <WorkspaceCalendar />
+            </section>
           )}
           {/* 📅 LEAVE REQUESTS TAB VIEW */}
           {activeTab === "leave" && (
