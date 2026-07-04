@@ -1,0 +1,63 @@
+@reference "../../index.css";
+
+/* Widget Parent Frame Container */
+.agenda-widget-container {
+  @apply rounded-2xl border border-app-border dark:border-app-border-dark bg-app-surface dark:bg-app-surface-dark p-5 shadow-xs;
+}
+
+/* Header Sections styles */
+.agenda-widget-header {
+  @apply flex items-center justify-between mb-5 pb-2 border-b border-slate-100 dark:border-slate-800/60;
+}
+
+.agenda-widget-title {
+  @apply text-xs font-bold text-app-muted dark:text-app-muted-dark uppercase tracking-wider;
+}
+
+/* Grid & Items Layout System */
+.agenda-list-wrapper {
+  @apply space-y-2;
+}
+
+.agenda-list-item {
+  @apply flex items-center justify-between gap-4 p-2 rounded-xl transition-all duration-200 hover:bg-slate-50 dark:hover:bg-slate-800/40;
+}
+
+.item-left-cluster {
+  @apply flex items-center gap-3 min-w-0 flex-1;
+}
+
+.event-metadata-block {
+  @apply min-w-0 flex-1;
+}
+
+/* Typography elements */
+.event-title-text {
+  @apply text-xs font-bold text-app-header dark:text-app-header-dark truncate tracking-tight;
+}
+
+.event-description-text {
+  @apply text-[10px] font-medium text-app-muted dark:text-app-muted-dark mt-0.5 truncate;
+}
+
+/* Contextual Badge System Modules */
+.type-status-badge {
+  @apply w-16 text-center py-0.5 text-[9px] font-bold uppercase rounded-md shrink-0 tracking-wider select-none;
+}
+
+.badge-todo {
+  @apply bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20;
+}
+
+.badge-deadline {
+  @apply bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20;
+}
+
+.badge-meeting {
+  @apply bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20;
+}
+
+/* Timestamp Callout Pin */
+.event-date-stamp {
+  @apply text-[10px] font-bold text-app-header dark:text-app-header-dark shrink-0 whitespace-nowrap bg-slate-100/70 dark:bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-200/20 dark:border-slate-700/30;
+}

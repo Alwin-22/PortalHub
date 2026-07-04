@@ -1,0 +1,121 @@
+@reference "../../index.css";
+
+/* Floating Actions Root Pin */
+.chat-assistant-root {
+  @apply fixed bottom-6 right-6 z-50 antialiased;
+}
+
+/* Floating Action Trigger Button (FAB) */
+.chat-fab-trigger {
+  @apply relative flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-xl hover:opacity-95 active:scale-95 transition-all cursor-pointer;
+}
+
+.fab-icon {
+  @apply h-6 w-6 transition-transform group-hover:scale-105;
+}
+
+/* Live Notification Ping Elements */
+.notification-ping-wrapper {
+  @apply absolute right-0 top-0 flex h-3 w-3;
+}
+
+.ping-wave {
+  @apply absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75;
+}
+
+.ping-core {
+  @apply relative inline-flex h-3 w-3 rounded-full bg-emerald-500;
+}
+
+/* Chat Canvas Window Panel Sheets */
+.chat-panel-window {
+  @apply flex h-[calc(100vh-120px)] max-h-[600px] w-80 flex-col rounded-2xl border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl animate-fadeIn sm:w-96;
+}
+
+/* Top Sheet Control Bar Header */
+.chat-window-header {
+  @apply flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 bg-linear-to-r from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 p-4 rounded-t-2xl;
+}
+
+.header-identity-cluster {
+  @apply flex items-center gap-2.5;
+}
+
+.sparkle-avatar-wrapper {
+  @apply flex h-8 w-8 items-center justify-center rounded-xl bg-blue-500/10 text-blue-400;
+}
+
+.sparkle-icon {
+  @apply h-4 w-4 text-blue-400 fill-blue-400/20;
+}
+
+.header-title-text {
+  @apply text-xs font-bold text-white tracking-tight;
+}
+
+.header-status-indicator {
+  @apply text-[10px] font-medium text-emerald-400 flex items-center gap-1;
+}
+
+.status-dot-pulse {
+  @apply h-1.5 w-1.5 rounded-full bg-emerald-400;
+}
+
+.window-close-btn {
+  @apply rounded-lg p-1.5 text-slate-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer;
+}
+
+/* Middle Messenger Canvas Area */
+.chat-messages-canvas {
+  @apply flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/40 dark:bg-slate-950/20;
+}
+
+.msg-row-wrapper {
+  @apply flex items-start gap-2.5;
+}
+
+.user-row-direction {
+  @apply flex-row-reverse;
+}
+
+/* Custom Message Bubble Identities */
+.sender-avatar-badge {
+  @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border text-xs font-bold shadow-xs;
+}
+
+.avatar-bot-theme {
+  @apply bg-blue-500/10 border-blue-500/20 text-blue-600 dark:text-blue-400;
+}
+
+.avatar-user-theme {
+  @apply bg-slate-100 border-slate-200 dark:bg-slate-800 dark:border-slate-700 text-slate-600 dark:text-slate-300;
+}
+
+.msg-bubble-base {
+  @apply max-w-[75%] rounded-2xl px-3.5 py-2 text-xs leading-relaxed font-medium;
+}
+
+.bubble-bot-theme {
+  @apply bg-white border border-slate-200/50 text-slate-800 rounded-tl-none dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200;
+}
+
+.bubble-user-theme {
+  @apply bg-linear-to-br from-blue-600 to-indigo-600 text-white rounded-tr-none shadow-xs shadow-blue-500/5;
+}
+
+/* Bottom Sheet Control Composers */
+.chat-footer-controls {
+  @apply border-t border-slate-100 dark:border-slate-800/80 p-3 bg-white dark:bg-slate-900 rounded-b-2xl;
+}
+
+.footer-form-element {
+  @apply flex items-center gap-2;
+}
+
+.chat-composition-input {
+  @apply w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30 p-2.5 text-xs text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 outline-hidden focus:border-blue-500 focus:bg-white dark:focus:bg-slate-800 transition-all;
+}
+
+.chat-msg-send-btn {
+  @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 shadow-xs hover:opacity-90 active:scale-95 transition-all cursor-pointer;
+}

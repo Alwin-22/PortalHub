@@ -70,7 +70,7 @@ export default function UserProfile({
     onNameChange(formData.name.trim());
     localStorage.setItem("employeeName", formData.name.trim());
 
-    toast.success("Profile setting configurations saved!", {
+    toast.success("Profile settings saved!", {
       className: "font-medium text-sm rounded-xl shadow-md",
       icon: <span>👤</span>,
     });
