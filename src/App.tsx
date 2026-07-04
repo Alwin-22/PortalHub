@@ -9,6 +9,7 @@ import LeaveSection from "./components/features/leave/LeaveSeaction";
 import WorkspaceCalendar from "./components/features/calendar/WorkspaceCalendar";
 import CompanyAnnouncements from "./components/features/announcements/CompanyAnnouncements";
 import { mockAnnouncements } from "./services/mockData";
+import TeamDirectory from "./components/features/directory/TeamDirectory";
 
 function App() {
   const [activeTab, setActiveTab] = useState<
@@ -74,6 +75,14 @@ function App() {
             </section>
           )}
         </div>
+
+        {/* 👥 TEAM DIRECTORY TAB VIEW */}
+        {activeTab === "team" && (
+          <section className="animate-fadeIn">
+            <TeamDirectory />
+          </section>
+        )}
+
         {/* 📢 ANNOUNCEMENTS FEED TAB VIEW */}
         {activeTab === "announcements" && (
           <section className="animate-fadeIn max-w-4xl space-y-4">
